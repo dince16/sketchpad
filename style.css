@@ -1,0 +1,92 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+}
+
+.sidebar {
+  background-color: #c7c7c7;
+  width: 100vw;
+  float: left;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 0px;
+}
+.table:not(:last-child) {
+  margin-bottom: 0px;
+}
+
+td {
+  width: 10%;
+  height: 35px;
+}
+
+.table td {
+  vertical-align: middle;
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0px;
+}
+
+table td {
+  vertical-align: middle;
+}
+
+.table td:hover {
+  text-indent: 0px;
+  text-align: center;
+  cursor: default;
+}
+
+.utilities tr td{
+  width: 33%;
+  text-align: center;
+}
+
+.utilities tr .reset:hover{
+  background-color: #FFFFFF;
+  cursor: default;
+}
+
+.utilities tr .sliderLabel {
+  padding: 1em;
+  width: 8%;
+}
+
+.utilities tr .slider {
+  padding: 1em;
+  width: 25%;
+}
+
+
+
+#custom-handle {
+  width: 3em;
+  height: 1.6em;
+  top: 50%;
+  margin-top: -.8em;
+  text-align: center;
+  line-height: 1.6em;
+}
+
+.slider {
+
+
+}
+
+.ui-widget-header,.ui-state-default, ui-button {
+   background:#b9cd6d;
+   border: 1px solid #b9cd6d;
+   color: #FFFFFF;
+   font-weight: bold;
+}
+
+.notification:not(:last-child) {
+  margin-bottom: 0px;
+}
+
+.notification {
+  padding: 5px;
+}
