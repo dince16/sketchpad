@@ -2,31 +2,19 @@ var canvas = document.getElementById("sketchpad");
 var ctx = canvas.getContext("2d");
 var pos = { x: 0, y: 0 };
 var color = "#000000";
-setCurrentColor(color);
 var width = 20;
 
+// set default color and canvas dimensions
+setCurrentColor(color);
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight - 150;
 
-
-
-
-
-
-$(function() {
-  $( "#dialog-1" ).dialog({
-    autoOpen: true,
-    modal: true,
-    width: 400,
-    height: 250,
-    buttons: {
-      Ok: function() {
-        $( this ).dialog( "close" );
-      }
-    }
-  });
+/*********************** WELCOME MODAL ***********************/
+$(document).ready(function(){
+  $("#myModal").modal('show');
 });
 
+/*********************** PEN WIDTH SLIDER ***********************/
 $(function() {
    $( "#slider-2" ).slider({
       value: 20,
@@ -34,6 +22,15 @@ $(function() {
       animate:"slow",
       orientation: "horizontal"
    });
+});
+
+/*********************** COLOR PICKER ***********************/
+$('.colors').on('click','td', function(){
+    // console.log($(this).css('background-color'));
+    // color = $(this).css('background-color');
+    console.log($(this).attr("bgcolor"));
+    color = $(this).attr("bgcolor");
+    setCurrentColor(color);
 });
 
 function setCurrentColor(color) {
@@ -45,23 +42,7 @@ function setCurrentColor(color) {
   }
 }
 
-$('.sizes').on('click', function(){
-    // console.log($(this).css('background-color'));
-    // color = $(this).css('background-color');
-    console.log($(this));
-
-});
-
-
-$('.colors').on('click','td', function(){
-    // console.log($(this).css('background-color'));
-    // color = $(this).css('background-color');
-    console.log($(this).attr("bgcolor"));
-    color = $(this).attr("bgcolor");
-    setCurrentColor(color);
-
-});
-
+/*********************** RESET BUTTON ***********************/
 $('.reset').on('click', function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     color = "#000000";
@@ -69,6 +50,10 @@ $('.reset').on('click', function(){
     $("#slider-2").slider("value", 20);
 });
 
+/***************************************************************************
+The functions below are borrowed from a canvas example and used for the
+actual pen / canvas functionality.
+****************************************************************************/
 
 // add event listeners to specify when functions should be triggered
 document.addEventListener("mousemove", draw);
@@ -84,19 +69,16 @@ function setPosition(event) {
 function draw(event) {
   if (event.buttons !== 1) return;
 
-  // width = document.getElementById("lineWidth").value > 0 ? document.getElementById("lineWidth").value : 5;
-  // console.log(width);
   var width = $("#slider-2").slider("value");
-
   ctx.beginPath();
 
-  ctx.lineWidth = width; // width of line
-  ctx.lineCap = "round"; // rounded end cap
-  ctx.strokeStyle = color; // hex color of line
+  ctx.lineWidth = width; // line width determined by slider
+  ctx.lineCap = "round";
+  ctx.strokeStyle = color; // color of line determined by color picker
 
   ctx.moveTo(pos.x, pos.y); // from position
   setPosition(event);
   ctx.lineTo(pos.x, pos.y); // to position
 
-  ctx.stroke(); // draw it!
+  ctx.stroke();
 }
