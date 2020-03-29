@@ -30,6 +30,11 @@ td {
   border: 0px;
 }
 
+.table td::selection {
+    color: none;
+    background: none;
+}
+
 table td {
   vertical-align: middle;
 }
@@ -43,6 +48,11 @@ table td {
 .utilities tr td{
   width: 33%;
   text-align: center;
+}
+
+.utilities tr td::selection {
+    color: none;
+    background: none;
 }
 
 .utilities tr .reset:hover{
